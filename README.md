@@ -1,1 +1,1 @@
-This is a blog app created by django
+This is a blog app created with django
