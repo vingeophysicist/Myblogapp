@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+
+<head>
+
+    {% block head %} {% endblock %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <link rel="icon" href="{% static 'css/images/logo1.jpg' %}">
+    <title></title> 
+    <!-- Bootstrap core CSS -->
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+    
+
+
+
+
+
+
+</head>
+
+<body>
+  
+
+    
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'blog:indexpage' %}">Vintechblog</a>
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse">
+                
+                <ul class="nav navbar-nav ">
+                    <li><a href="{% url 'blog:contact' %}">Hire Me</a></li>
+                    <li><a href="{% url 'blog:aboutme' %}">About Me</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://web.facebook.com/vincent.obodoma/"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/vingeophysicist"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/vincent-obodoma-3353b9114/"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://github.com/vingeophysicist"><i class="fa fa-github"></i></a></li>
+                    <li><a href="https://stackoverflow.com/users/10101331/obodoma-uzondu-vincent"><i class="fa fa-stack-overflow"></i></a></li>
+                    <li><a href="https://codepen.io/vingeophysicist"><i class="fa fa-codepen"></i></a></li>
+                </ul>
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <header>
+			<a href="{% url 'blog:indexpage' %}"><img src="{% static 'images/cover.png' %}"></a>
+		</header>
+
+        {% block body %} 
+        {% endblock %}
+
+        
+
+        
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+
+        <div class="footer-socials">
+            
+            <a href="https://web.facebook.com/vincent.obodoma/"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/vingeophysicist"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/vincent-obodoma-3353b9114/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/vingeophysicist"><i class="fa fa-github"></i></a>
+            <a href="https://stackoverflow.com/users/10101331/obodoma-uzondu-vincent"><i class="fa fa-stack-overflow"></i></a>
+            <a href="https://codepen.io/vingeophysicist"><i class="fa fa-codepen"></i></a>
+        </div>
+
+        <div class="footer-bottom">
+            <i class="fa fa-copyright"></i> Copyright 2015. All rights reserved.<br>
+            Web made by <a href="#">Vintech</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   
+  
+
+    <script>
+        $('#subscribe').submit(function(e){
+      e.preventDefault();
+      var email_id = $("#email_id").val();
+      if(email_id){
+        var csrfmiddlewaretoken = csrftoken;
+        var email_data = {"email_id": email_id, 
+                          "csrfmiddlewaretoken" : csrfmiddlewaretoken};
+        $.ajax({
+          type : 'POST',
+          url :  '{% url "blog:contact" %}',
+          data : email_data,
+          success : function(response){
+            $('#email_id').val(''); 
+            if(response.status == "404"){
+              alert("This Email is already been subscribed!");
+            }
+            else{
+              alert("Thank you for Subscribing! Please Check your Email to Confirm the Subscription");
+            }
+          },
+          error: function(response) {
+            alert("Sorry Something went Wrong");
+            $('#email_id').val(''); 
+          }
+        });
+        return false;
+      }
+      else{
+        alert("Please provide correct email!");
+      }
+  });
+ 
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+})
+
+       
+
+
+            
+    
+   
+    
+   
+       
+    </script>
+
+    
+</body>
+</html>
