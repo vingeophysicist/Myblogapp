@@ -17,7 +17,7 @@ The codes mostly used for this projects are HTML, CSS , javascript and Python.
 	
 # Description <h2> 
 
-The backend framework used for this blog app is djangoframework . The frontend framework used is basically bootstrap. Raw Javascrit, Css and HTML codes where also used to improve the interactivity and design of the web app. Crispy form was used in collaboration with the boostrap CDN to improve the design of the forms. django_summernote editor was integrated in the admin section to give the blog body a beautiful design and make writing more easier to use. Mailchimp api's powers the email subscription functionality . Taggit was also installed to improve tagging in the blog app. Thumbnail is used to resize image uploaded from the media section. Sitemaps and site improves SEO.   
+The backend framework used for this blog app is djangoframework . The frontend framework used is basically bootstrap. Raw Javascrit, Css and HTML codes where also used to improve the interactivity and design of the web app. Crispy form was used in collaboration with the boostrap CDN to improve the design of the forms. django_summernote editor was integrated in the admin section to give the blog body a beautiful design and make writing more easier. Mailchimp api's powers the email subscription functionality . Taggit was also installed to improve tagging in the blog app. Thumbnail is used to resize image uploaded from the media section. Sitemaps and site improves SEO.   
 
 
 	
