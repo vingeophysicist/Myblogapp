@@ -22,7 +22,7 @@ The backend framework used for this blog app is djangoframework . The frontend f
 # Backend(python)<h2>
 Python is the major language used for the backend/logic of the web app. A model was created to categories the blog post. Generally, django templating technique is used to relate the view logic(python) to the frontend 
 
-# Backend(python)<h2>
+# Database<h2>
 SQLite
 
 
